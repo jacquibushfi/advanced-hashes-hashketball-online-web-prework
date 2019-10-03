@@ -123,54 +123,14 @@ def game_hash
 
 end 
   
-  #
-#def num_points_scored(player_name)
-#array2 = []
-#game_hash.each do |location, team_data|
-#    team_data.each do |attribute, values|
-#        if attribute == :players
-#          values.each do |person, data|
-#            data.each do |i, j|
-#              if person == player_name && i == [:points]
-#                binding pry
-#                array2.push(j)
-#              end#
-#
-#            end
-#          end
-#        end
-#    end
-#end
-#return array2[0]
-#end
-
-def num_points_scored(name)
-  find_player = game_hash.find {|player| player.fetch(:players) == name }
-  find_player.fetch(:points).to_i
-end 
-
-
-
-
-def team_names 
-  team_stats.collect do |team|
-    team[:team_name]
-  end 
-end 
-team_names 
-
-def num_points_scored(name)
-  find_player = players.find {|player| player.fetch(:player_name) == name }
-  find_player.fetch(:points)
-end 
-
-
-
-
-def player_stats(player_name)
- stats= players.find {|player| player.fetch(:player_name) == player_name}
-  stats.delete_if {|info, string| info == :player_name}
+def num_points_scored name 
+  game_hash.each do |team_position, team_data|
+    team_data[:players].each do |player_name, player_data|
+    if player_name == name
+      return player_data[:points]
+    elsif player_name =! name
+    return nil
+    end
 end
-
-
-
+end
+end
