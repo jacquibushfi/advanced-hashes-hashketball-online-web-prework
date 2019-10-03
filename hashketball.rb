@@ -146,7 +146,7 @@ end
 
 def num_points_scored(name)
   find_player = game_hash.find {|player| player.fetch(:players) == name }
-  find_player.fetch(:points)
+  find_player.fetch(:points).to_i
 end 
 
 
