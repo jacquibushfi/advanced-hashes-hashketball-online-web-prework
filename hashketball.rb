@@ -128,9 +128,9 @@ end
 #array2 = []
 #game_hash.each do |location, team_data|
 #    team_data.each do |attribute, values|
-#3        if attribute == :players
+#        if attribute == :players
 #          values.each do |person, data|
-##3            data.each do |i, j|
+#            data.each do |i, j|
 #              if person == player_name && i == [:points]
 #                binding pry
 #                array2.push(j)
@@ -144,7 +144,10 @@ end
 #return array2[0]
 #end
 
-
+def num_points_scored(name)
+  find_player = players.find {|player| player.fetch(:player_name) == name }
+  find_player.fetch(:points)
+end 
 
 
 
