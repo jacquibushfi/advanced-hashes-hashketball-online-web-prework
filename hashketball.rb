@@ -152,6 +152,30 @@ end
 
 
 
+def team_names 
+  team_stats.collect do |team|
+    team[:team_name]
+  end 
+end 
+team_names 
+
+def player_numbers(team_name)
+  find_numbers = team_stats.find {|team| team.fetch(:team_name) == team_name}
+  find_numbers[:players].collect do |player| 
+    player[:number]
+  end 
+end 
+player_numbers("Brooklyn Nets")
+
+# def player_stats(name)
+#   stats = players.find {|stat| stat.fetch(:player_name) == name}
+#   stats
+# end 
+
+def player_stats(player_name)
+ stats= players.find {|player| player.fetch(:player_name) == player_name}
+  stats.delete_if {|info, string| info == :player_name}
+end
 
 
 
